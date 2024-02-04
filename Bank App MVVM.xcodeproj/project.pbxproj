@@ -11,6 +11,11 @@
 		45D00BE62B6EAB7300CC2A70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D00BE52B6EAB7300CC2A70 /* ContentView.swift */; };
 		45D00BE82B6EAB7600CC2A70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45D00BE72B6EAB7600CC2A70 /* Assets.xcassets */; };
 		45D00BEB2B6EAB7600CC2A70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45D00BEA2B6EAB7600CC2A70 /* Preview Assets.xcassets */; };
+		45D00BF82B6EABF500CC2A70 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D00BF72B6EABF500CC2A70 /* Double+Extensions.swift */; };
+		45D00BFA2B6EAC0600CC2A70 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D00BF92B6EAC0600CC2A70 /* URL+Extensions.swift */; };
+		45D00BFC2B6EAC1100CC2A70 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D00BFB2B6EAC1100CC2A70 /* View+Extensions.swift */; };
+		45D00BFE2B6EACEA00CC2A70 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D00BFD2B6EACEA00CC2A70 /* Account.swift */; };
+		45D00C002B6F421800CC2A70 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D00BFF2B6F421800CC2A70 /* AccountService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		45D00BE52B6EAB7300CC2A70 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		45D00BE72B6EAB7600CC2A70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45D00BEA2B6EAB7600CC2A70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		45D00BF72B6EABF500CC2A70 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		45D00BF92B6EAC0600CC2A70 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		45D00BFB2B6EAC1100CC2A70 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		45D00BFD2B6EACEA00CC2A70 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		45D00BFF2B6F421800CC2A70 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +61,12 @@
 		45D00BE22B6EAB7300CC2A70 /* Bank App MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				45D00BF62B6EABD300CC2A70 /* Models */,
+				45D00BF52B6EABC800CC2A70 /* Views */,
+				45D00BF42B6EABC000CC2A70 /* Screens */,
+				45D00BF32B6EABB700CC2A70 /* Services */,
+				45D00BF22B6EABAF00CC2A70 /* ViewModels */,
+				45D00BF12B6EABA400CC2A70 /* Extensions */,
 				45D00BE32B6EAB7300CC2A70 /* Bank_App_MVVMApp.swift */,
 				45D00BE52B6EAB7300CC2A70 /* ContentView.swift */,
 				45D00BE72B6EAB7600CC2A70 /* Assets.xcassets */,
@@ -65,6 +81,53 @@
 				45D00BEA2B6EAB7600CC2A70 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		45D00BF12B6EABA400CC2A70 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				45D00BF72B6EABF500CC2A70 /* Double+Extensions.swift */,
+				45D00BF92B6EAC0600CC2A70 /* URL+Extensions.swift */,
+				45D00BFB2B6EAC1100CC2A70 /* View+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		45D00BF22B6EABAF00CC2A70 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		45D00BF32B6EABB700CC2A70 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				45D00BFF2B6F421800CC2A70 /* AccountService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		45D00BF42B6EABC000CC2A70 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		45D00BF52B6EABC800CC2A70 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		45D00BF62B6EABD300CC2A70 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				45D00BFD2B6EACEA00CC2A70 /* Account.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +201,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				45D00BE62B6EAB7300CC2A70 /* ContentView.swift in Sources */,
+				45D00BFA2B6EAC0600CC2A70 /* URL+Extensions.swift in Sources */,
 				45D00BE42B6EAB7300CC2A70 /* Bank_App_MVVMApp.swift in Sources */,
+				45D00BFC2B6EAC1100CC2A70 /* View+Extensions.swift in Sources */,
+				45D00C002B6F421800CC2A70 /* AccountService.swift in Sources */,
+				45D00BF82B6EABF500CC2A70 /* Double+Extensions.swift in Sources */,
+				45D00BFE2B6EACEA00CC2A70 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
