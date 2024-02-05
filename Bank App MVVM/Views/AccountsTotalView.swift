@@ -10,7 +10,13 @@ import SwiftUI
 struct AccountsTotalView: View {
     let accountsTotal: Double
     var body: some View {
-        Text("\(accountsTotal.formatAsCurrency())")
+        HStack{
+            Text("Total: ").font(.largeTitle)
+            Spacer()
+
+            Text("\(accountsTotal.formatAsCurrency())").font(.largeTitle).bold()
+
+        }
     }
 }
 

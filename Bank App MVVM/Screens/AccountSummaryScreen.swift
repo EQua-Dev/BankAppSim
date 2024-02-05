@@ -13,12 +13,19 @@ struct AccountSummaryScreen: View {
     
     var body: some View {
         VStack{
-            AccountListView(accounts: accountSummaryVM.accounts)
-            AccountsTotalView(accountsTotal: accountSummaryVM.total)
+            GeometryReader{ geometry in
+                VStack{
+                    AccountListView(accounts: self.accountSummaryVM.accounts).frame(height: geometry.size.height/2)
+                    AccountsTotalView(accountsTotal: self.accountSummaryVM.total).padding(16)
+                    Spacer() //was not necessary for me
+                }
+            }
         }
             .onAppear{
                 self.accountSummaryVM.getAllAccounts()
             }
+            .navigationBarTitle("Accounts Summary")
+            .embedInNavigationView()
     }
     
 }

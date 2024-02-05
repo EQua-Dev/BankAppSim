@@ -25,7 +25,7 @@ extension AccountType{
 }
 
 struct Account: Codable{
-    var id: String
+    var id: UUID
     var name: String
     let accountType: AccountType
     var balance: Double

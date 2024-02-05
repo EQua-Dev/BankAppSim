@@ -53,7 +53,7 @@ class AccountViewModel {
     }
     
     var accountId: String{
-        account.id
+        account.id.uuidString
     }
     
     var accountType: String{
