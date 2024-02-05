@@ -35,7 +35,6 @@ class AccountService {
             guard let data = data, error == nil else{
                 return completion(.failure(.noData))
             }
-            
             //decode the data
             let accounts = try? JSONDecoder().decode([Account].self, from: data)
             if accounts == nil {
