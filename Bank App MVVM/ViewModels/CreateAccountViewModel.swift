@@ -55,12 +55,19 @@ extension CreateAccountViewModel{
         let createAccountReq = CreateAccountRequest(name: name, accountType: accountType.rawValue, balance: Double(balance)!)
         
         AccountService.shared.createAccount(createAccountRequest: createAccountReq){ result in
-//            switch result {
-//                case .success(createAccountResponse):
-//
-//                case .failure(error):
-//
-//            }
+            switch result {
+                case .success(let createAccountResponse):
+                    if createAccountResponse.success{
+                        completion(true)
+                    }else{
+                        if let error = createAccountResponse.error{
+                            self.errorMessage = error
+                            completion(false)
+                        }
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
             
         }
     }
