@@ -25,7 +25,10 @@ struct AccountSummaryScreen: View {
         .onAppear{
             self.accountSummaryVM.getAllAccounts()
         }
-        .sheet(isPresented: $isPresented){
+        .sheet(isPresented: $isPresented, onDismiss: {
+            //get all accounts
+            self.accountSummaryVM.getAllAccounts()
+        }){
             CreateAccountScreen()
         }
         .navigationBarItems(trailing: Button("Add Account"){

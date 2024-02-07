@@ -39,7 +39,9 @@ extension CreateAccountViewModel{
             errors.append("Balance is not valid")
         }
         if !errors.isEmpty {
-            self.errorMessage = errors.joined(separator: "\n")
+            DispatchQueue.main.async {
+                self.errorMessage = errors.joined(separator: "\n")
+            }
             return false
         }
         
@@ -61,7 +63,9 @@ extension CreateAccountViewModel{
                         completion(true)
                     }else{
                         if let error = createAccountResponse.error{
-                            self.errorMessage = error
+                            DispatchQueue.main.async {
+                                self.errorMessage = error
+                            }
                             completion(false)
                         }
                     }

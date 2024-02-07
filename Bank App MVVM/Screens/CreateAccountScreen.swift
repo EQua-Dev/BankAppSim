@@ -37,6 +37,8 @@ struct CreateAccountScreen: View {
                 Spacer()
             }
             
+            Text(self.createAccountVM.errorMessage).foregroundColor(.red)
+            
         }
         
     }
