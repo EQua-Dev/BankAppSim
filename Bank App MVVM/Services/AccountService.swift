@@ -97,6 +97,8 @@ class AccountService {
                 return completion(.failure(.noData))
             }
             
+            print("data decoding stage")
+            
             //decode the data
             let transferFundsResponse = try? JSONDecoder().decode(TransferFundResponse.self, from: data)
             if let transferFundsResponse = transferFundsResponse {
