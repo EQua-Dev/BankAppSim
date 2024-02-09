@@ -33,26 +33,30 @@ struct TransferFundsScreen: View {
     }
     
     var body: some View {
-        VStack{
-            AccountListView(accounts: self.transferFundsVM.accounts)
-            TransferFundsAccountSelectionButtons(transferFundsVM: self.transferFundsVM, showSheet: $showSheet, isFromAccount: $isFromAccount, isToAccount: $isToAccount).frame(height: 300)
-            Spacer()
-            .onAppear{
-                self.transferFundsVM.populateAccounts()
-            }
-            //show error message from the transaction if any
-            Text(self.transferFundsVM.message ?? "")
-            
-            Button("Submit Transfer"){
-                self.transferFundsVM.submitTransfer(){
-                    //dismiss the modal
-                    self.presentationMode.wrappedValue.dismiss()
+        
+        ScrollView{
+            VStack{
+                AccountListView(accounts: self.transferFundsVM.accounts).frame(height: 200)
+                TransferFundsAccountSelectionButtons(transferFundsVM: self.transferFundsVM, showSheet: $showSheet, isFromAccount: $isFromAccount, isToAccount: $isToAccount).frame(height: 300)
+                Spacer()
+                .onAppear{
+                    self.transferFundsVM.populateAccounts()
                 }
-            }.padding()
-            .actionSheet(isPresented: $showSheet){
-                ActionSheet(title: Text("Transfer Funds"), message: Text("Choose an account"), buttons: self.actionSheetButtons)
+                //show error message from the transaction if any
+                Text(self.transferFundsVM.message ?? "")
+                
+                Button("Submit Transfer"){
+                    self.transferFundsVM.submitTransfer(){
+                        //dismiss the modal
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                }.padding()
+                .actionSheet(isPresented: $showSheet){
+                    ActionSheet(title: Text("Transfer Funds"), message: Text("Choose an account"), buttons: self.actionSheetButtons)
+                }
             }
-        }.navigationBarTitle("Transfer Funds").embedInNavigationView()
+        }
+       .navigationBarTitle("Transfer Funds").embedInNavigationView()
     }
 }
 
@@ -62,41 +66,4 @@ struct TransferFundsScreen_Previews: PreviewProvider {
     }
 }
 
-struct TransferFundsAccountSelectionButtons: View{
-    
-    @ObservedObject var transferFundsVM: TransferFundsViewModel
-    @Binding var showSheet: Bool
-    @Binding var isFromAccount: Bool
-    @Binding var isToAccount: Bool
-    
-    var body: some View{
-        VStack(spacing: 10){
-            Button("From \(self.transferFundsVM.fromAccountName) \(self.transferFundsVM.fromAccountType)"){
-                showSheet = true
-                isFromAccount = true
-                isToAccount = false
-                
-            }.padding().frame(maxWidth: .infinity)
-                .background(.green)
-                .foregroundColor(.white)
-                .bold()
-                .cornerRadius(16)
-            
-            Button("To \(self.transferFundsVM.toAccountName) \(self.transferFundsVM.toAccountType)"){
-                showSheet = true
-                isFromAccount = false
-                isToAccount = true
-            }.padding().frame(maxWidth: .infinity)
-                .background(.green)
-                .foregroundColor(.white)
-                .bold()
-                .cornerRadius(16)
-                .opacity(self.transferFundsVM.fromAccount != nil ? 1.0 : 0.5)
-                .disabled(self.transferFundsVM.fromAccount == nil)
-            TextField("Amount", text: $transferFundsVM.amount).textFieldStyle(RoundedBorderTextFieldStyle())
 
-            TextField("Narration", text: $transferFundsVM.narration).textFieldStyle(RoundedBorderTextFieldStyle())
-                
-        }.padding()
-    }
-}
