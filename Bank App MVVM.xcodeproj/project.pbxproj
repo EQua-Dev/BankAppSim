@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4566EC522B9E01B7007A8E53 /* CreateUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4566EC512B9E01B7007A8E53 /* CreateUserRequest.swift */; };
 		4585367B2B70C61900B5F16C /* CreateAccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4585367A2B70C61900B5F16C /* CreateAccountRequest.swift */; };
 		4585367D2B70C73700B5F16C /* CreateAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4585367C2B70C73700B5F16C /* CreateAccountResponse.swift */; };
 		458D05642B75C92D008AAB1D /* TransferFundsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458D05632B75C92D008AAB1D /* TransferFundsScreen.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4566EC512B9E01B7007A8E53 /* CreateUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserRequest.swift; sourceTree = "<group>"; };
 		4585367A2B70C61900B5F16C /* CreateAccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountRequest.swift; sourceTree = "<group>"; };
 		4585367C2B70C73700B5F16C /* CreateAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountResponse.swift; sourceTree = "<group>"; };
 		458D05632B75C92D008AAB1D /* TransferFundsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferFundsScreen.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				4585367C2B70C73700B5F16C /* CreateAccountResponse.swift */,
 				45ADC04E2B74C09300FB33C8 /* TransferFundRequest.swift */,
 				45ADC0502B74C3E000FB33C8 /* TransferFundResponse.swift */,
+				4566EC512B9E01B7007A8E53 /* CreateUserRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				45D00C042B6FAEC500CC2A70 /* AccountSummaryScreen.swift in Sources */,
 				45D00BFA2B6EAC0600CC2A70 /* URL+Extensions.swift in Sources */,
 				45B0F1F12B73495B00D3BE79 /* CreateAccountViewModel.swift in Sources */,
+				4566EC522B9E01B7007A8E53 /* CreateUserRequest.swift in Sources */,
 				45D00BE42B6EAB7300CC2A70 /* Bank_App_MVVMApp.swift in Sources */,
 				45ADC0512B74C3E000FB33C8 /* TransferFundResponse.swift in Sources */,
 				45D00BFC2B6EAC1100CC2A70 /* View+Extensions.swift in Sources */,
