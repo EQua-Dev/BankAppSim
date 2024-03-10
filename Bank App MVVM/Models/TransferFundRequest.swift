@@ -7,8 +7,15 @@
 
 import Foundation
 
-struct TransferFundRequest: Codable{
+/*struct TransferFundRequest: Codable{
     let accountFromId: String
     let accountToId: String
     let amount: Double
+}*/
+
+struct TransferFundRequest: Codable{
+    let transactionTo: String
+    let transactionAmount: Double
+    let transactionNarration: String
+    let transactionDate: String
 }

@@ -7,8 +7,13 @@
 
 import Foundation
 
-struct CreateAccountRequest: Codable{
+/*struct CreateAccountRequest: Codable{
     let name: String
     let accountType: String
     let balance: Double
+}*/
+
+struct CreateAccountRequest: Codable{
+    let accountType: String
+    let initialDeposit: Double
 }
