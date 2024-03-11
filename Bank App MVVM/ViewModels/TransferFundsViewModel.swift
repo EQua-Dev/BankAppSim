@@ -9,112 +9,105 @@ import Foundation
 
 class TransferFundsViewModel: ObservableObject{
     
-    var fromAccount: AccountViewModel?
-    var toAccount: AccountViewModel?
+    // var fromAccount: AccountViewModel?
+    var transactionTo: String = ""
+    var transactionFrom: String = ""
+    
+    var  transactionDate: String = ""
+    
+    var  accountNoToSearch: String = ""
     
     @Published var message: String? = ""
     @Published var accounts: [AccountViewModel] = [AccountViewModel]()
+    @Published var searchedAccount: AccountInfo = AccountInfo()
+    @Published var transactionReceipt: TransactionDetail = TransactionDetail()
+
     
-    var amount: String = ""
-    var narration: String = ""
+    var transactionAmount: String = ""
+    var transactionNarration: String = ""
     
+    
+    
+
+}
+
+extension TransferFundsViewModel{
+    
+    //validators
+    
+    private var isAccountNumberValid: Bool {
+        accountNoToSearch.count == 10
+    }
     //check if the amount entered to transfer is a valid numeric value
     private var isAmountValid: Bool {
-        guard let transferAmount = Double(amount) else {
+        guard let transferAmount = Double(transactionAmount) else {
             return false
         }
         return transferAmount <= 0 ? false : true
     }
-    
-    // ensure that a selected account to send from is not available in the list of accounts to send to
-    var filteredAccounts: [AccountViewModel] {
-        if self.fromAccount == nil{
-            return accounts
-        }else{
-            return accounts.filter{
-                guard let fromAccount = self.fromAccount else{
-                    return false
-                }
-                return $0.accountId != fromAccount.accountId
-            }
-        }
-    }
-    
-    //unwrap and expose the account type of a selected 'fromAccount'
-    var fromAccountType: String {
-        fromAccount != nil ? fromAccount!.accountType : ""
-    }
-    
-    //unwrap and expose the account type of a selected 'toAccount'
-    var toAccountType: String{
-        toAccount != nil ? toAccount!.accountType : ""
-    }
-    
-    //unwrap and expose the account owner name of a selected 'fromAccount'
-    var fromAccountName: String {
-        fromAccount != nil ? fromAccount!.name : ""
-    }
-    
-    //unwrap and expose the account owner name of a selected 'toAccount'
-    var toAccountName: String{
-        toAccount != nil ? toAccount!.name : ""
-    }
-    
+
     private func isValid() -> Bool{
         return isAmountValid
     }
     
-    func submitTransfer(completion: @escaping () -> Void){
+    private func isAccountNoValid(enteredAccountNumber: String) -> Bool{
+        return enteredAccountNumber.count == 10
+    }
+    
+}
+
+extension TransferFundsViewModel{
+    
+    func searchOneAccount(completion: @escaping (Bool) -> Void){
         
-        if !isValid(){
-            return
+        if isAccountNoValid(enteredAccountNumber: accountNoToSearch){
+            return completion(false)
         }
-        
-        //ensure that there is a selected from and to accounts
-        guard let fromAccount = fromAccount,
-              let toAccount = toAccount,
-              let transferAmount = Double(amount)else{
-            return
-        }
-        
-        
-        let transferFundRequest = TransferFundRequest(accountFromId: fromAccount.accountId.lowercased(), accountToId: toAccount.accountId.lowercased(), amount: transferAmount)
-        
-        AccountService.shared.transferFunds(transferFundRequest: transferFundRequest){ result in
+        AccountService.shared.searchOneAccount(accountNumber: accountNoToSearch){ result in
             
-            switch(result){
-                case .success(let response):
-                    if response.success{
-                        completion()
-                    }else{
-                        self.message = response.error
+            switch (result){
+                case .success(let account):
+                    DispatchQueue.main.async {
+                        self.searchedAccount = account.data.account
                     }
+                    completion(true)
+                    
                 case .failure(let error):
-                    self.message = error.localizedDescription
                     print(error.localizedDescription)
             }
             
         }
     }
     
-    //fetch all accounts
-    func populateAccounts(){
+    func transferFunds(completion: @escaping () -> Void){
         
-        AccountService.shared.getAllAccounts(){ result in
-            switch(result){
-                case .success(let accounts):
-                    if let accounts = accounts{
-                        DispatchQueue.main.async {
-                            self.accounts = accounts.map(AccountViewModel.init)
-                        }
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-            }
-            
+        if !isValid() || isAccountNoValid(enteredAccountNumber: transactionTo){
+            return
         }
+      
         
+        let transferFundRequest = TransferFundRequest(transactionTo: transactionTo, transactionAmount: Double(transactionAmount)!, transactionNarration: transactionNarration, transactionDate: String.currentMillisTime())
+        
+        AccountService.shared.transferFunds(myAccountNumber: transactionFrom, transferFundRequest: transferFundRequest){ result in
+        
+                    switch(result){
+                        case .success(let response):
+                            if response.status{
+                                DispatchQueue.main.async {
+                                    self.transactionReceipt = response.data
+                                }
+                                completion()
+                            }else{
+                                self.message = response.message
+                            }
+                        case .failure(let error):
+                            self.message = error.localizedDescription
+                            print(error.localizedDescription)
+                    }
+        
+                }
     }
     
     
 }
+

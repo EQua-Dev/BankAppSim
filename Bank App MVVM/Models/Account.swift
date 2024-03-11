@@ -30,3 +30,11 @@ struct Account: Codable{
     let accountType: AccountType
     var balance: Double
 }
+
+struct GetMyAccountsResponse: Decodable{
+    let status: Bool
+    let statusCode: Int
+    let message: String
+    let data: [AccountInfo]
+}
+

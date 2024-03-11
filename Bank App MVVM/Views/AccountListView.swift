@@ -22,7 +22,7 @@ struct AccountListView: View {
 struct AccountListView_Previews: PreviewProvider {
     static var previews: some View {
         
-        let account = Account(id: UUID(), name: "Emeka Ike", accountType:  .checking, balance: 200)
+        let account = AccountInfo()
         
         let accountVM = AccountViewModel(account: account)
         
@@ -35,14 +35,14 @@ struct AccountCell: View {
     var body: some View {
         HStack{
             VStack(alignment: .leading, spacing: 10){
-                Text(account.name)
+                Text(account.accountOwner.userName)
                     .font(.headline)
                 
                 Text(account.accountType)
                     .opacity(0.5)
             }
             Spacer()
-            Text("\(account.balance.formatAsCurrency())")
+            Text("\(account.accountBalance.formatAsCurrency())")
                 .foregroundColor(.green)
         }
     }

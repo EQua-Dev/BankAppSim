@@ -16,7 +16,7 @@ struct TransferFundsAccountSelectionButtons: View{
     
     var body: some View{
         VStack(spacing: 10){
-            Button("From \(self.transferFundsVM.fromAccountName) \(self.transferFundsVM.fromAccountType)"){
+            /* Button("From \(self.transferFundsVM.fromAccountName) \(self.transferFundsVM.fromAccountType)"){
                 showSheet = true
                 isFromAccount = true
                 isToAccount = false
@@ -41,7 +41,7 @@ struct TransferFundsAccountSelectionButtons: View{
             TextField("Amount", text: $transferFundsVM.amount).textFieldStyle(RoundedBorderTextFieldStyle())
 
             TextField("Narration", text: $transferFundsVM.narration).textFieldStyle(RoundedBorderTextFieldStyle())
-                
+             */
         }.padding()
     }
 }

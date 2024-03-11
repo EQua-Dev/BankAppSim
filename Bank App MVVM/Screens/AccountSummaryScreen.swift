@@ -33,11 +33,11 @@ struct AccountSummaryScreen: View {
             }
         }
         .onAppear{
-            self.accountSummaryVM.getAllAccounts()
+            self.accountSummaryVM.getAllMyAccounts()
         }
         .sheet(isPresented: $isPresented, onDismiss: {
             //get all accounts
-            self.accountSummaryVM.getAllAccounts()
+            self.accountSummaryVM.getAllMyAccounts()
         }){
             switch(self.activeSheet){
                 case .addAccount:

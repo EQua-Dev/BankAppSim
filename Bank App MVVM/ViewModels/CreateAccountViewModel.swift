@@ -10,20 +10,19 @@ import Foundation
 
 class CreateAccountViewModel: ObservableObject {
     
-    var name: String = ""
     var accountType: AccountType = .checking
-    var balance: String = ""
+    var initialDeposit: String = ""
     @Published var errorMessage: String = ""
+    @Published var createdAccount: String = ""
+    
     
 }
 
 extension CreateAccountViewModel{
     //input validation
-    private var isNameValid: Bool {
-        !name.isEmpty
-    }
-    private var isBalanceValid: Bool {
-        guard let userBalance = Double(balance) else {
+   
+    private var isInitialDepositValid: Bool {
+        guard let userBalance = Double(initialDeposit) else {
             return false
         }
         return userBalance <= 0 ? false : true
@@ -31,12 +30,9 @@ extension CreateAccountViewModel{
     
     private func isValid() -> Bool{
         var errors = [String]()
-        
-        if !isNameValid{
-            errors.append("Name is not valid")
-        }
-        if !isBalanceValid{
-            errors.append("Balance is not valid")
+       
+        if !isInitialDepositValid{
+            errors.append("Initial Balance is not valid")
         }
         if !errors.isEmpty {
             DispatchQueue.main.async {
@@ -54,15 +50,19 @@ extension CreateAccountViewModel{
     func createAccount(completion: @escaping (Bool) -> Void){
         
         if !isValid() {return completion(false)}
-        let createAccountReq = CreateAccountRequest(name: name, accountType: accountType.rawValue, balance: Double(balance)!)
+        let createAccountReq = CreateAccountRequest(accountType: accountType.rawValue, initialDeposit: Double(initialDeposit)!)
+  
         
         AccountService.shared.createAccount(createAccountRequest: createAccountReq){ result in
-            switch result {
+            switch (result) {
                 case .success(let createAccountResponse):
-                    if createAccountResponse.success{
+                    if createAccountResponse.status{
+                        DispatchQueue.main.async {
+                            self.createdAccount = createAccountResponse.data.accountNumber
+                        }
                         completion(true)
                     }else{
-                        if let error = createAccountResponse.error{
+                        if let error = createAccountResponse.message{
                             DispatchQueue.main.async {
                                 self.errorMessage = error
                             }

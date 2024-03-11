@@ -19,9 +19,9 @@ extension URL {
         return URL(string: "https://wood-pushy-buckthornpepperberry.glitch.me/api/accounts")
     }
     
-    static func urlForTransferFunds() -> URL? {
-        return URL(string: "https://wood-pushy-buckthornpepperberry.glitch.me/api/transfer")
-    }
+//    static func urlForTransferFunds() -> URL? {
+//        return URL(string: "https://wood-pushy-buckthornpepperberry.glitch.me/api/transfer")
+//    }
     
     static func urlForSignUp() -> URL? {
         return URL(string: "\(baseUrl)signup")

@@ -8,6 +8,14 @@
 import Foundation
 
 struct CreateAccountResponse: Decodable{
-    let success: Bool
-    let error: String?
+    let status: Bool
+    let statusCode: Int
+    let message: String!
+    let data: CreatedAccount
+}
+
+struct CreatedAccount: Decodable{
+    let userId: String
+    let accountNumber: String
+    let accountBalance: Double
 }

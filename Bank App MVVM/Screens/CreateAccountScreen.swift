@@ -15,14 +15,13 @@ struct CreateAccountScreen: View {
     
     var body: some View {
         Form{
-            TextField("Name", text: self.$createAccountVM.name)
             Picker(selection: self.$createAccountVM.accountType, label: EmptyView()){
                 ForEach(AccountType.allCases, id: \.self){
                     accountType in
                     Text(accountType.title).tag(accountType)
                 }
             }.pickerStyle(SegmentedPickerStyle())
-            TextField("Balance", text: self.$createAccountVM.balance)
+            TextField("Balance", text: self.$createAccountVM.initialDeposit)
             
             HStack{
                 Spacer()

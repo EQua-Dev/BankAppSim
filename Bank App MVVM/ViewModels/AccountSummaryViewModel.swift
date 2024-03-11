@@ -9,20 +9,20 @@ import Foundation
 
 class AccountSummaryViewModel: ObservableObject{
     
-    private var _accountsModel = [Account]()
+    private var _accountsModel = [AccountInfo]()
     
     @Published var accounts: [AccountViewModel] = [AccountViewModel]()
     
     //get the total of the account summary by mapping through all the accounts and adding the balance
     var total: Double{
-        _accountsModel.map {$0.balance}.reduce(0, +)
+        _accountsModel.map {$0.accountBalance}.reduce(0, +)
     }
     
-    func getAllAccounts(){
-        AccountService.shared.getAllAccounts{ result in
+    func getAllMyAccounts(){
+        AccountService.shared.getAllMyAccounts{ result in
             switch result {
                 case .success(let accounts):
-                    if let accounts = accounts{
+                    if let accounts = accounts?.data {
                         self._accountsModel = accounts
                         DispatchQueue.main.async {
                             self.accounts = accounts.map(AccountViewModel.init)
@@ -40,28 +40,56 @@ class AccountSummaryViewModel: ObservableObject{
 
 class AccountViewModel {
     
-    var account: Account
+    var account: AccountInfo
     
-    init(account: Account) {
+    init(account: AccountInfo) {
         self.account = account
     }
     
     //expose the various properties of the  account model
     
-    var name: String{
-        account.name
-    }
-    
     var accountId: String{
-        account.id.uuidString
+        account.accountId
     }
     
     var accountType: String{
-        account.accountType.title
+        account.accountType
+    }
+    
+    var accountOwner: AccountOwner{
+        account.accountOwnerId
+    }
+    
+    var accountNumber: String{
+        account.accountNumber
     }
 
-    var balance: Double{
-        account.balance
+    var accountBalance: Double{
+        account.accountBalance
+    }
+
+    var accountDateCreated: String{
+        account.dateCreated
+    }
+    
+}
+
+class AccountOwnerViewModel {
+    
+    var accountOwner: AccountOwner
+    
+    init(accountOwner: AccountOwner) {
+        self.accountOwner = accountOwner
+    }
+    
+    //expose the various properties of the  account owner model
+    
+    var accountOwnerId: String{
+        accountOwner.userId
+    }
+    
+    var accountOwnerName: String{
+        accountOwner.userName
     }
     
 }
