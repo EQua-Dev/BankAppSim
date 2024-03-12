@@ -13,6 +13,8 @@ enum ActiveSheet{
 }
 
 struct AccountSummaryScreen: View {
+    @Binding var currentScreen: Screens
+
     
     @ObservedObject private var accountSummaryVM = AccountSummaryViewModel()
     @State private var isPresented: Bool = false
@@ -59,6 +61,7 @@ struct AccountSummaryScreen: View {
 
 struct AccountSummaryScreen_Previews: PreviewProvider {
     static var previews: some View {
-        AccountSummaryScreen()
+        let currentScreen = Binding.constant(Screens.accountsHome)
+        AccountSummaryScreen(currentScreen: currentScreen)
     }
 }

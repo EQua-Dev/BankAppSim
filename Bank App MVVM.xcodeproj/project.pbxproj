@@ -13,6 +13,7 @@
 		4566EC582B9E0C73007A8E53 /* CreateUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4566EC572B9E0C73007A8E53 /* CreateUserResponse.swift */; };
 		4585367B2B70C61900B5F16C /* CreateAccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4585367A2B70C61900B5F16C /* CreateAccountRequest.swift */; };
 		4585367D2B70C73700B5F16C /* CreateAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4585367C2B70C73700B5F16C /* CreateAccountResponse.swift */; };
+		458C81262BA058AD00C8F759 /* ScreensStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C81252BA058AD00C8F759 /* ScreensStack.swift */; };
 		458D05642B75C92D008AAB1D /* TransferFundsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458D05632B75C92D008AAB1D /* TransferFundsScreen.swift */; };
 		458D05662B762283008AAB1D /* TransferFundsAccountSelectionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458D05652B762283008AAB1D /* TransferFundsAccountSelectionButtons.swift */; };
 		459F96942BA0426E001E7E2E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459F96932BA0426E001E7E2E /* SignUpView.swift */; };
@@ -47,6 +48,7 @@
 		4566EC572B9E0C73007A8E53 /* CreateUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserResponse.swift; sourceTree = "<group>"; };
 		4585367A2B70C61900B5F16C /* CreateAccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountRequest.swift; sourceTree = "<group>"; };
 		4585367C2B70C73700B5F16C /* CreateAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountResponse.swift; sourceTree = "<group>"; };
+		458C81252BA058AD00C8F759 /* ScreensStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreensStack.swift; sourceTree = "<group>"; };
 		458D05632B75C92D008AAB1D /* TransferFundsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferFundsScreen.swift; sourceTree = "<group>"; };
 		458D05652B762283008AAB1D /* TransferFundsAccountSelectionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferFundsAccountSelectionButtons.swift; sourceTree = "<group>"; };
 		459F96932BA0426E001E7E2E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				45B0F1F22B7351E000D3BE79 /* CreateAccountScreen.swift */,
 				458D05632B75C92D008AAB1D /* TransferFundsScreen.swift */,
 				45AD37BF2B9F5F77006191BA /* UserAuthScreen.swift */,
+				458C81252BA058AD00C8F759 /* ScreensStack.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				45D00BFA2B6EAC0600CC2A70 /* URL+Extensions.swift in Sources */,
 				45B0F1F12B73495B00D3BE79 /* CreateAccountViewModel.swift in Sources */,
 				4566EC522B9E01B7007A8E53 /* CreateUserRequest.swift in Sources */,
+				458C81262BA058AD00C8F759 /* ScreensStack.swift in Sources */,
 				45D00BE42B6EAB7300CC2A70 /* Bank_App_MVVMApp.swift in Sources */,
 				45ADC0512B74C3E000FB33C8 /* TransferFundResponse.swift in Sources */,
 				45D00BFC2B6EAC1100CC2A70 /* View+Extensions.swift in Sources */,

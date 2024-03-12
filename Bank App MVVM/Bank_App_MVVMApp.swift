@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct Bank_App_MVVMApp: App {
+    @State private var currentScreen: Screens = .signIn // Set default screen to SignInView
+    
     var body: some Scene {
         WindowGroup {
-            SignInView()
-        }
+            // Use a switch statement to determine which view to display based on the currentScreen
+            switch currentScreen {
+                case .signUp:
+                    SignUpView(currentScreen: $currentScreen)
+                case .signIn:
+                    SignInView(currentScreen: $currentScreen)
+                case .accountsHome:
+                    AccountSummaryScreen(currentScreen: $currentScreen)
+            }        }
     }
 }

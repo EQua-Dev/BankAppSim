@@ -9,6 +9,9 @@ import SwiftUI
 
 struct SignInView: View {
     
+    @Binding var currentScreen: Screens
+
+    
     @ObservedObject private var createUserVM = CreateUserViewModel()
     @State private var navigateToHome = false
 
@@ -33,7 +36,7 @@ struct SignInView: View {
                     createUserVM
                         .signInUser{success in
                             if success{
-                                navigateToHome = true
+                                currentScreen = .accountsHome
                                 print(success)
                             }else{
                                 
@@ -56,7 +59,9 @@ struct SignInView: View {
                            
                            Spacer()
                 
-                NavigationLink("Create New User Account", destination: {SignUpView()})
+                Button("Create New User Account"){
+                    currentScreen = .signUp
+                }
                 Spacer()
             }
             .padding()
@@ -65,9 +70,6 @@ struct SignInView: View {
                     .frame(width: geometry.size.width, height: geometry.size.height)
             }
             
-            NavigationLink(destination: AccountSummaryScreen(), isActive: $navigateToHome){
-                    EmptyView()
-                }
         }
         .navigationBarTitle("Sign In")
             .embedInNavigationView()
@@ -76,7 +78,9 @@ struct SignInView: View {
 }
 
 struct SignInView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        SignInView()
+        let currentScreen = Binding.constant(Screens.signUp)
+        SignInView(currentScreen: currentScreen)
     }
 }
