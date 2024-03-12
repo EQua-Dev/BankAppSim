@@ -18,7 +18,7 @@ struct CreateUserResponse: Decodable{
 struct SignInUserResponse: Decodable{
     let status: Bool
     let statusCode: Int
-    let message: String
+    let message: String!
     let data: SignInToken
 }
 

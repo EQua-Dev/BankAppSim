@@ -53,7 +53,7 @@ class UserService {
         }.resume()
     }
     
-    func SignInUser(createUserRequest: CreateUserRequest, completion: @escaping(Result<SignInUserResponse, NetworkError>) -> Void){
+    func signInUser(createUserRequest: CreateUserRequest, completion: @escaping(Result<SignInUserResponse, NetworkError>) -> Void){
         
         //set the url
         guard let url = URL.urlForSignIn() else{
@@ -76,6 +76,7 @@ class UserService {
             //decode the data
             let signInUserResponse = try? JSONDecoder().decode(SignInUserResponse.self, from: data)
             if let signInUserResponse = signInUserResponse {
+                UserDefaults.standard.set(signInUserResponse.data.token, forKey: String.AUTH_TOKEN_KEY())
                 completion(.success(signInUserResponse))
             }else{
                 completion(.failure(.decodingError))

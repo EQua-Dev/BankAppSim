@@ -15,8 +15,12 @@
 		4585367D2B70C73700B5F16C /* CreateAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4585367C2B70C73700B5F16C /* CreateAccountResponse.swift */; };
 		458D05642B75C92D008AAB1D /* TransferFundsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458D05632B75C92D008AAB1D /* TransferFundsScreen.swift */; };
 		458D05662B762283008AAB1D /* TransferFundsAccountSelectionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458D05652B762283008AAB1D /* TransferFundsAccountSelectionButtons.swift */; };
+		459F96942BA0426E001E7E2E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459F96932BA0426E001E7E2E /* SignUpView.swift */; };
+		459F96962BA04573001E7E2E /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459F96952BA04573001E7E2E /* LoadingIndicatorView.swift */; };
 		45AD37BC2B9F0F9A006191BA /* FetchOneAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD37BB2B9F0F9A006191BA /* FetchOneAccountResponse.swift */; };
 		45AD37BE2B9F1513006191BA /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD37BD2B9F1513006191BA /* String+Extensions.swift */; };
+		45AD37C02B9F5F77006191BA /* UserAuthScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD37BF2B9F5F77006191BA /* UserAuthScreen.swift */; };
+		45AD37C22B9FE761006191BA /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD37C12B9FE761006191BA /* SignInView.swift */; };
 		45ADC04F2B74C09300FB33C8 /* TransferFundRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ADC04E2B74C09300FB33C8 /* TransferFundRequest.swift */; };
 		45ADC0512B74C3E000FB33C8 /* TransferFundResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ADC0502B74C3E000FB33C8 /* TransferFundResponse.swift */; };
 		45ADC0532B74D51E00FB33C8 /* TransferFundsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ADC0522B74D51E00FB33C8 /* TransferFundsViewModel.swift */; };
@@ -45,8 +49,12 @@
 		4585367C2B70C73700B5F16C /* CreateAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountResponse.swift; sourceTree = "<group>"; };
 		458D05632B75C92D008AAB1D /* TransferFundsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferFundsScreen.swift; sourceTree = "<group>"; };
 		458D05652B762283008AAB1D /* TransferFundsAccountSelectionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferFundsAccountSelectionButtons.swift; sourceTree = "<group>"; };
+		459F96932BA0426E001E7E2E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		459F96952BA04573001E7E2E /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		45AD37BB2B9F0F9A006191BA /* FetchOneAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchOneAccountResponse.swift; sourceTree = "<group>"; };
 		45AD37BD2B9F1513006191BA /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		45AD37BF2B9F5F77006191BA /* UserAuthScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthScreen.swift; sourceTree = "<group>"; };
+		45AD37C12B9FE761006191BA /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		45ADC04E2B74C09300FB33C8 /* TransferFundRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferFundRequest.swift; sourceTree = "<group>"; };
 		45ADC0502B74C3E000FB33C8 /* TransferFundResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferFundResponse.swift; sourceTree = "<group>"; };
 		45ADC0522B74D51E00FB33C8 /* TransferFundsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferFundsViewModel.swift; sourceTree = "<group>"; };
@@ -155,6 +163,7 @@
 				45D00C032B6FAEC500CC2A70 /* AccountSummaryScreen.swift */,
 				45B0F1F22B7351E000D3BE79 /* CreateAccountScreen.swift */,
 				458D05632B75C92D008AAB1D /* TransferFundsScreen.swift */,
+				45AD37BF2B9F5F77006191BA /* UserAuthScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -165,6 +174,9 @@
 				45D00C052B708F2100CC2A70 /* AccountListView.swift */,
 				45D00C072B70939A00CC2A70 /* AccountsTotalView.swift */,
 				458D05652B762283008AAB1D /* TransferFundsAccountSelectionButtons.swift */,
+				45AD37C12B9FE761006191BA /* SignInView.swift */,
+				459F96932BA0426E001E7E2E /* SignUpView.swift */,
+				459F96952BA04573001E7E2E /* LoadingIndicatorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -258,6 +270,8 @@
 				45D00C062B708F2100CC2A70 /* AccountListView.swift in Sources */,
 				4566EC562B9E0AD6007A8E53 /* UserService.swift in Sources */,
 				45D00C082B70939A00CC2A70 /* AccountsTotalView.swift in Sources */,
+				45AD37C02B9F5F77006191BA /* UserAuthScreen.swift in Sources */,
+				459F96962BA04573001E7E2E /* LoadingIndicatorView.swift in Sources */,
 				45D00C042B6FAEC500CC2A70 /* AccountSummaryScreen.swift in Sources */,
 				45D00BFA2B6EAC0600CC2A70 /* URL+Extensions.swift in Sources */,
 				45B0F1F12B73495B00D3BE79 /* CreateAccountViewModel.swift in Sources */,
@@ -271,11 +285,13 @@
 				458D05662B762283008AAB1D /* TransferFundsAccountSelectionButtons.swift in Sources */,
 				45AD37BE2B9F1513006191BA /* String+Extensions.swift in Sources */,
 				45B0F1F32B7351E000D3BE79 /* CreateAccountScreen.swift in Sources */,
+				45AD37C22B9FE761006191BA /* SignInView.swift in Sources */,
 				45AD37BC2B9F0F9A006191BA /* FetchOneAccountResponse.swift in Sources */,
 				45D00BF82B6EABF500CC2A70 /* Double+Extensions.swift in Sources */,
 				4585367B2B70C61900B5F16C /* CreateAccountRequest.swift in Sources */,
 				45D00BFE2B6EACEA00CC2A70 /* Account.swift in Sources */,
 				45D00C022B6F7AC400CC2A70 /* AccountSummaryViewModel.swift in Sources */,
+				459F96942BA0426E001E7E2E /* SignUpView.swift in Sources */,
 				45ADC04F2B74C09300FB33C8 /* TransferFundRequest.swift in Sources */,
 				458D05642B75C92D008AAB1D /* TransferFundsScreen.swift in Sources */,
 				4566EC582B9E0C73007A8E53 /* CreateUserResponse.swift in Sources */,

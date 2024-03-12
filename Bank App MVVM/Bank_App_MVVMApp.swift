@@ -11,7 +11,7 @@ import SwiftUI
 struct Bank_App_MVVMApp: App {
     var body: some Scene {
         WindowGroup {
-            AccountSummaryScreen()
+            SignInView()
         }
     }
 }
