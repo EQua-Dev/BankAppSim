@@ -30,6 +30,7 @@ class AccountSummaryViewModel: ObservableObject{
                     }
                     print("success")
                 case .failure(let error):
+                    print("wahala")
                     print(error.localizedDescription)
             }
             

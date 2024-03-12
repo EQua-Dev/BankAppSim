@@ -32,7 +32,7 @@ struct SignInView: View {
                               .cornerRadius(5.0)
                               .padding(.horizontal, 15)
                 Spacer()
-                Button(action: {
+                CustomButton(action: {
                     createUserVM
                         .signInUser{success in
                             if success{
@@ -43,14 +43,8 @@ struct SignInView: View {
                             }
                             
                         }
-                           }) {
-                               Text("Login")
-                                   .foregroundColor(.white)
-                                   .padding()
-                                   .frame(width: 220, height: 50)
-                                   .background(Color.blue)
-                                   .cornerRadius(10.0)
-                           }
+                }, buttonTitle: "Login")
+               
                            .alert(isPresented: $createUserVM.showAlert) {
                                Alert(title: Text("Error"), message: Text("\(createUserVM.errorMessage)"), dismissButton: .default(Text("OK")))
                            }
@@ -76,6 +70,19 @@ struct SignInView: View {
         
     }
 }
+
+/*private func signIn(createUserVM: CreateUserViewModel, currentScreen: Screens){
+    createUserVM
+        .signInUser{success in
+            if success{
+                currentScreen = .accountsHome
+                print(success)
+            }else{
+                
+            }
+            
+        }
+}*/
 
 struct SignInView_Previews: PreviewProvider {
     

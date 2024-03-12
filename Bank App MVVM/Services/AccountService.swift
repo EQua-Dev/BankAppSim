@@ -26,9 +26,8 @@ class AccountService {
     ///   - createAccountRequest: JSON body containing accountType and initialDepositAmount
     ///   - completion: returns either a case from the NetworkError enum or a CreateAccountResponse JSON data
     func createAccount(createAccountRequest: CreateAccountRequest, completion: @escaping(Result<CreateAccountResponse, NetworkError>) -> Void){
-        
         //set the url
-        guard let url = URL.urlForCreateAccounts() else{
+        guard let url = URL.urlForCreateAccount() else{
             return completion(.failure(.badUrl))
         }
         
@@ -36,7 +35,9 @@ class AccountService {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(String.authToken()!)", forHTTPHeaderField: "Authorization")
         request.httpBody = try? JSONEncoder().encode(createAccountRequest)
+        
         
         //make network request
         URLSession.shared.dataTask(with: request){ data, response, error in
@@ -50,6 +51,7 @@ class AccountService {
             if let createAccountResponse = createAccountResponse {
                 completion(.success(createAccountResponse))
             }else{
+                print("Error \(error)")
                 completion(.failure(.decodingError))
             }
             
@@ -62,16 +64,21 @@ class AccountService {
         guard let url = URL.urlForFetchAllAccountsOfUser() else {
             return completion(.failure(.badUrl))
         }
+        print("Token: \(String.authToken()!)")
+
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Authorization", forHTTPHeaderField: "Bearer \(String.authToken()!)")
-        
+        request.addValue("Bearer \(String.authToken()!)", forHTTPHeaderField: "Authorization")
+
+        print("Account Request: \(request.allHTTPHeaderFields)")
+
         
         //make the network request
         URLSession.shared.dataTask(with: url){ data, response, error in
             
+            print("Account \(data)")
             //unwrap the response data
             guard let data = data, error == nil else{
                 return completion(.failure(.noData))
@@ -98,8 +105,8 @@ class AccountService {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Authorization", forHTTPHeaderField: "Bearer \(String.authToken()!)")
-        
+        request.addValue("Bearer \(String.authToken()!)", forHTTPHeaderField: "Authorization")
+
         //make network request
         URLSession.shared.dataTask(with: request){ data, response, error in
             //unwrap the response data
@@ -132,7 +139,7 @@ class AccountService {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Authorization", forHTTPHeaderField: "Bearer \(String.authToken()!)")
+        request.addValue("Bearer \(String.authToken()!)", forHTTPHeaderField: "Authorization")
         request.httpBody = try? JSONEncoder().encode(transferFundRequest)
         
         //make network request

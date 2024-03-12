@@ -14,6 +14,7 @@
 		4585367B2B70C61900B5F16C /* CreateAccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4585367A2B70C61900B5F16C /* CreateAccountRequest.swift */; };
 		4585367D2B70C73700B5F16C /* CreateAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4585367C2B70C73700B5F16C /* CreateAccountResponse.swift */; };
 		458C81262BA058AD00C8F759 /* ScreensStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C81252BA058AD00C8F759 /* ScreensStack.swift */; };
+		458C81282BA0680F00C8F759 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C81272BA0680F00C8F759 /* CustomButton.swift */; };
 		458D05642B75C92D008AAB1D /* TransferFundsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458D05632B75C92D008AAB1D /* TransferFundsScreen.swift */; };
 		458D05662B762283008AAB1D /* TransferFundsAccountSelectionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458D05652B762283008AAB1D /* TransferFundsAccountSelectionButtons.swift */; };
 		459F96942BA0426E001E7E2E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459F96932BA0426E001E7E2E /* SignUpView.swift */; };
@@ -49,6 +50,7 @@
 		4585367A2B70C61900B5F16C /* CreateAccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountRequest.swift; sourceTree = "<group>"; };
 		4585367C2B70C73700B5F16C /* CreateAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountResponse.swift; sourceTree = "<group>"; };
 		458C81252BA058AD00C8F759 /* ScreensStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreensStack.swift; sourceTree = "<group>"; };
+		458C81272BA0680F00C8F759 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		458D05632B75C92D008AAB1D /* TransferFundsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferFundsScreen.swift; sourceTree = "<group>"; };
 		458D05652B762283008AAB1D /* TransferFundsAccountSelectionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferFundsAccountSelectionButtons.swift; sourceTree = "<group>"; };
 		459F96932BA0426E001E7E2E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				45AD37C12B9FE761006191BA /* SignInView.swift */,
 				459F96932BA0426E001E7E2E /* SignUpView.swift */,
 				459F96952BA04573001E7E2E /* LoadingIndicatorView.swift */,
+				458C81272BA0680F00C8F759 /* CustomButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				4585367D2B70C73700B5F16C /* CreateAccountResponse.swift in Sources */,
 				4566EC542B9E0A3E007A8E53 /* CreateUserViewModel.swift in Sources */,
 				45D00C002B6F421800CC2A70 /* AccountService.swift in Sources */,
+				458C81282BA0680F00C8F759 /* CustomButton.swift in Sources */,
 				458D05662B762283008AAB1D /* TransferFundsAccountSelectionButtons.swift in Sources */,
 				45AD37BE2B9F1513006191BA /* String+Extensions.swift in Sources */,
 				45B0F1F32B7351E000D3BE79 /* CreateAccountScreen.swift in Sources */,

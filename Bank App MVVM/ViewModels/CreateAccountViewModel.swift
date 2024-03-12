@@ -10,10 +10,13 @@ import Foundation
 
 class CreateAccountViewModel: ObservableObject {
     
-    var accountType: AccountType = .checking
+    var accountType: AccountType = .current
     var initialDeposit: String = ""
     @Published var errorMessage: String = ""
     @Published var createdAccount: String = ""
+    
+    @Published var showAlert: Bool = false
+    @Published var isLoading: Bool = false
     
     
 }
@@ -36,6 +39,7 @@ extension CreateAccountViewModel{
         }
         if !errors.isEmpty {
             DispatchQueue.main.async {
+                self.showAlert = true
                 self.errorMessage = errors.joined(separator: "\n")
             }
             return false
@@ -49,28 +53,38 @@ extension CreateAccountViewModel{
     
     func createAccount(completion: @escaping (Bool) -> Void){
         
-        if !isValid() {return completion(false)}
+        self.isLoading = true
+        if !isValid() {
+            self.isLoading = false
+            return completion(false)}
         let createAccountReq = CreateAccountRequest(accountType: accountType.rawValue, initialDeposit: Double(initialDeposit)!)
   
+        print("Accounts Viewmodel")
         
         AccountService.shared.createAccount(createAccountRequest: createAccountReq){ result in
             switch (result) {
                 case .success(let createAccountResponse):
                     if createAccountResponse.status{
                         DispatchQueue.main.async {
+                            self.isLoading = false
                             self.createdAccount = createAccountResponse.data.accountNumber
                         }
                         completion(true)
                     }else{
                         if let error = createAccountResponse.message{
                             DispatchQueue.main.async {
+                                self.isLoading = false
+                                self.showAlert = true
                                 self.errorMessage = error
                             }
                             completion(false)
                         }
                     }
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                        print(error.localizedDescription)
+                    }
             }
             
         }

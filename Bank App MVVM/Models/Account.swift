@@ -8,18 +8,21 @@
 import Foundation
 
 enum AccountType: String, Codable, CaseIterable{
-    case checking
+    case current
     case saving
+    case student
 }
 
     //create an extension of the AccountType enum that conditionally sets the value
 extension AccountType{
     var title: String {
         switch self {
-            case .checking:
-                return "Checking"
+            case .current:
+                return "Current"
             case .saving:
                 return "Saving"
+            case .student:
+                return "Student"
         }
     }
 }
