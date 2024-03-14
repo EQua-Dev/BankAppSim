@@ -43,7 +43,7 @@ struct SignInView: View {
                             }
                             
                         }
-                }, buttonTitle: "Login")
+                }, buttonTitle: "Login", width: 220)
                
                            .alert(isPresented: $createUserVM.showAlert) {
                                Alert(title: Text("Error"), message: Text("\(createUserVM.errorMessage)"), dismissButton: .default(Text("OK")))

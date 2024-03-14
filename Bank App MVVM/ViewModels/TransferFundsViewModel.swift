@@ -60,7 +60,7 @@ extension TransferFundsViewModel{
     
     func searchOneAccount(completion: @escaping (Bool) -> Void){
         
-        if isAccountNoValid(enteredAccountNumber: accountNoToSearch){
+        if !isAccountNoValid(enteredAccountNumber: accountNoToSearch){
             return completion(false)
         }
         AccountService.shared.searchOneAccount(accountNumber: accountNoToSearch){ result in

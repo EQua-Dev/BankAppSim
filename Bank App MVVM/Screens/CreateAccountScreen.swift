@@ -40,7 +40,7 @@ struct CreateAccountScreen: View {
                             self.presentationMode.wrappedValue.dismiss()
                         }
                     }
-                }, buttonTitle: "Create Account")
+                }, buttonTitle: "Create Account", width: 220)
                 
             }.padding()
             if createAccountVM.isLoading{
