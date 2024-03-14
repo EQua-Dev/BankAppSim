@@ -17,8 +17,9 @@ struct CustomButton: View {
                            .foregroundColor(.white)
                            .padding()
                            .frame(width: 220, height: 50)
-                           .background(Color.blue)
+                           .background(Color.teal.gradient)
                            .cornerRadius(10.0)
+                           //.backgroundStyle(.teal.gradient)
                    }
     }
 }

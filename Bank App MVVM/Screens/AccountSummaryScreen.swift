@@ -24,6 +24,20 @@ struct AccountSummaryScreen: View {
         VStack{
             GeometryReader{ geometry in
                 VStack{
+                    
+                    Text(String.generateGreeting())
+                        .font(.system(size: 32))
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading)
+                    
+                    Text("My Accounts")
+                        .font(.system(size: 32))
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.teal.gradient)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding()
+                        
                     AccountListView(accounts: self.accountSummaryVM.accounts).frame(height: geometry.size.height/2)
                     AccountsTotalView(accountsTotal: self.accountSummaryVM.total).padding(16)
                     Spacer() //was not necessary for me
@@ -53,7 +67,7 @@ struct AccountSummaryScreen: View {
             activeSheet = .addAccount
             self.isPresented = true
         })
-        .navigationBarTitle("Accounts Summary")
+        .navigationBarTitle("Hello \(String.userName()!)")
         .embedInNavigationView()
     }
     

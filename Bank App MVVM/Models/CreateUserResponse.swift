@@ -24,4 +24,5 @@ struct SignInUserResponse: Decodable{
 
 struct SignInToken: Decodable{
     let token: String
+    let username: String
 }

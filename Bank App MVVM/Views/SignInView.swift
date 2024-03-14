@@ -55,7 +55,7 @@ struct SignInView: View {
                 
                 Button("Create New User Account"){
                     currentScreen = .signUp
-                }
+                }.foregroundStyle(.teal.gradient)
                 Spacer()
             }
             .padding()

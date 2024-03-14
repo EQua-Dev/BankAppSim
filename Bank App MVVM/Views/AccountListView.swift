@@ -33,13 +33,16 @@ struct AccountListView_Previews: PreviewProvider {
 struct AccountCell: View {
     let account : AccountViewModel
     var body: some View {
+        
+        var dateCreated: Int64 = Int64(account.accountDateCreated)!
         HStack{
             VStack(alignment: .leading, spacing: 10){
-                Text(account.accountOwner.userName)
+                Text(account.accountType)
                     .font(.headline)
                 
-                Text(account.accountType)
+                Text("created \(String.formatDate(milliseconds: dateCreated, format: "EEE, dd MMM, yyyy"))")
                     .opacity(0.5)
+                    .font(.caption)
             }
             Spacer()
             Text("\(account.accountBalance.formatAsCurrency())")
