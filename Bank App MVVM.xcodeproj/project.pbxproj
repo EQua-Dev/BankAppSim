@@ -40,6 +40,7 @@
 		45D00C042B6FAEC500CC2A70 /* AccountSummaryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D00C032B6FAEC500CC2A70 /* AccountSummaryScreen.swift */; };
 		45D00C062B708F2100CC2A70 /* AccountListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D00C052B708F2100CC2A70 /* AccountListView.swift */; };
 		45D00C082B70939A00CC2A70 /* AccountsTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D00C072B70939A00CC2A70 /* AccountsTotalView.swift */; };
+		45EB0D5F2BA2EBBA0071FD03 /* AccountDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EB0D5E2BA2EBBA0071FD03 /* AccountDetailScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		45D00C032B6FAEC500CC2A70 /* AccountSummaryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryScreen.swift; sourceTree = "<group>"; };
 		45D00C052B708F2100CC2A70 /* AccountListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListView.swift; sourceTree = "<group>"; };
 		45D00C072B70939A00CC2A70 /* AccountsTotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTotalView.swift; sourceTree = "<group>"; };
+		45EB0D5E2BA2EBBA0071FD03 /* AccountDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				458D05632B75C92D008AAB1D /* TransferFundsScreen.swift */,
 				45AD37BF2B9F5F77006191BA /* UserAuthScreen.swift */,
 				458C81252BA058AD00C8F759 /* ScreensStack.swift */,
+				45EB0D5E2BA2EBBA0071FD03 /* AccountDetailScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				458C81282BA0680F00C8F759 /* CustomButton.swift in Sources */,
 				458D05662B762283008AAB1D /* TransferFundsAccountSelectionButtons.swift in Sources */,
 				45AD37BE2B9F1513006191BA /* String+Extensions.swift in Sources */,
+				45EB0D5F2BA2EBBA0071FD03 /* AccountDetailScreen.swift in Sources */,
 				45B0F1F32B7351E000D3BE79 /* CreateAccountScreen.swift in Sources */,
 				45AD37C22B9FE761006191BA /* SignInView.swift in Sources */,
 				45AD37BC2B9F0F9A006191BA /* FetchOneAccountResponse.swift in Sources */,

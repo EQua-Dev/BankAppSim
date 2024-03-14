@@ -10,6 +10,7 @@ import SwiftUI
 enum ActiveSheet{
     case addAccount
     case transferFunds
+    case accountDetail
 }
 
 struct AccountSummaryScreen: View {
@@ -19,6 +20,8 @@ struct AccountSummaryScreen: View {
     @ObservedObject private var accountSummaryVM = AccountSummaryViewModel()
     @State private var isPresented: Bool = false
     @State private var activeSheet: ActiveSheet = .addAccount
+    
+    @Binding var selectedAccount: AccountViewModel //= AccountViewModel(account: AccountInfo())
     
     var body: some View {
         VStack{
@@ -38,7 +41,12 @@ struct AccountSummaryScreen: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
                         
-                    AccountListView(accounts: self.accountSummaryVM.accounts).frame(height: geometry.size.height/2)
+                    AccountListView(accounts: self.accountSummaryVM.accounts, onTapAccount: {account in
+                        //self.selectedAccount = account
+                        //navigate to new screen
+                        currentScreen = .accountDetail
+                        selectedAccount = account
+                    }).frame(height: geometry.size.height/2)
                     AccountsTotalView(accountsTotal: self.accountSummaryVM.total).padding(16)
                     Spacer() //was not necessary for me
                     Button("Transfer Funds"){
@@ -51,7 +59,7 @@ struct AccountSummaryScreen: View {
         .onAppear{
             self.accountSummaryVM.getAllMyAccounts()
         }
-        .sheet(isPresented: $isPresented, onDismiss: {
+        /*.sheet(isPresented: $isPresented, onDismiss: {
             //get all accounts
             self.accountSummaryVM.getAllMyAccounts()
         }){
@@ -59,10 +67,12 @@ struct AccountSummaryScreen: View {
                 case .addAccount:
                     CreateAccountScreen()
                 case .transferFunds:
-                    TransferFundsScreen()
+                    TransferFundsScreen( account: selectedAccount.account)
+                case .accountDetail:
+                    AccountDetailScreen(currentScreen: )
             }
             
-        }
+        }*/
         .navigationBarItems(trailing: Button("Add Account"){
             activeSheet = .addAccount
             self.isPresented = true
@@ -76,6 +86,6 @@ struct AccountSummaryScreen: View {
 struct AccountSummaryScreen_Previews: PreviewProvider {
     static var previews: some View {
         let currentScreen = Binding.constant(Screens.accountsHome)
-        AccountSummaryScreen(currentScreen: currentScreen)
+        AccountSummaryScreen(currentScreen: currentScreen, selectedAccount: Binding.constant(AccountViewModel(account: AccountInfo())))
     }
 }

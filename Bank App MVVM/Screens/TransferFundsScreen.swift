@@ -13,6 +13,8 @@ struct TransferFundsScreen: View {
     
     @ObservedObject private var transferFundsVM = TransferFundsViewModel()
     
+    let account: AccountInfo
+    
     @State private var showSheet = false
     @State private var isFromAccount = false
     @State private var isToAccount = false
@@ -61,10 +63,10 @@ struct TransferFundsScreen: View {
     }
 }
 
-struct TransferFundsScreen_Previews: PreviewProvider {
+/*struct TransferFundsScreen_Previews: PreviewProvider {
     static var previews: some View {
         TransferFundsScreen()
     }
-}
+}*/
 
 

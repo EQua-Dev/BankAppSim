@@ -13,6 +13,7 @@ enum Screens: CaseIterable{
     case signUp
     case signIn
     case accountsHome
+    case accountDetail
 }
 
     //create an extension of the Screens enum that conditionally sets the value
@@ -24,7 +25,9 @@ extension Screens{
             case .signIn:
                 return AnyView(SignInView(currentScreen: Binding.constant(.signIn)))
             case .accountsHome:
-                return AnyView(AccountSummaryScreen(currentScreen: Binding.constant(.accountsHome)))
+                return AnyView(AccountSummaryScreen(currentScreen: Binding.constant(.accountsHome), selectedAccount: Binding.constant(AccountViewModel(account: AccountInfo()))))
+            case .accountDetail:
+                return AnyView(AccountDetailScreen(currentScreen: Binding.constant(.accountsHome), accountDetail: AccountViewModel(account: AccountInfo())))
         }
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct Bank_App_MVVMApp: App {
     @State private var currentScreen: Screens = .signIn // Set default screen to SignInView
+    @State private var selectedAccount: AccountViewModel = AccountViewModel(account: AccountInfo()) // BAD PRACTICE!!!
     
     var body: some Scene {
         WindowGroup {
@@ -20,7 +21,9 @@ struct Bank_App_MVVMApp: App {
                 case .signIn:
                     SignInView(currentScreen: $currentScreen)
                 case .accountsHome:
-                    AccountSummaryScreen(currentScreen: $currentScreen)
+                    AccountSummaryScreen(currentScreen: $currentScreen, selectedAccount: $selectedAccount)
+                case .accountDetail:
+                    AccountDetailScreen(currentScreen: $currentScreen, accountDetail: selectedAccount)
             }        }
     }
 }

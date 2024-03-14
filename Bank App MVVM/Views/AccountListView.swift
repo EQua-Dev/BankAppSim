@@ -10,10 +10,13 @@ import SwiftUI
 struct AccountListView: View {
     
     let accounts: [AccountViewModel]
+    let onTapAccount: (AccountViewModel) -> Void
     
     var body: some View {
         List(accounts, id: \.accountId){ account in
-            AccountCell(account: account)
+            AccountCell(account: account).onTapGesture {
+                onTapAccount(account)
+            }
             
         }
     }
@@ -26,7 +29,7 @@ struct AccountListView_Previews: PreviewProvider {
         
         let accountVM = AccountViewModel(account: account)
         
-        AccountListView(accounts: [accountVM])
+        AccountListView(accounts: [accountVM], onTapAccount: {_ in })
     }
 }
 
@@ -34,15 +37,18 @@ struct AccountCell: View {
     let account : AccountViewModel
     var body: some View {
         
-        var dateCreated: Int64 = Int64(account.accountDateCreated)!
+        let dateCreated: Int64 = Int64(account.accountDateCreated)!
         HStack{
             VStack(alignment: .leading, spacing: 10){
-                Text(account.accountType)
+                Text(account.accountNumber)
                     .font(.headline)
-                
-                Text("created \(String.formatDate(milliseconds: dateCreated, format: "EEE, dd MMM, yyyy"))")
+                Text(account.accountType)
                     .opacity(0.5)
                     .font(.caption)
+                
+                /*Text("created \(String.formatDate(milliseconds: dateCreated, format: "EEE, dd MMM, yyyy"))")
+                    .opacity(0.5)
+                    .font(.caption)*/
             }
             Spacer()
             Text("\(account.accountBalance.formatAsCurrency())")
