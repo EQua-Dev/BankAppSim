@@ -15,12 +15,12 @@ struct TransferFundResponse: Decodable{
 }
 
 struct TransactionDetail: Decodable{
-    let transactionID: String = ""
-    let transactionTime: String = ""
-    let transactionAmount: Double = 0.0
-    let transactionNarration: String = ""
-    let transactionReceiver: AccountInfo = AccountInfo()
-    let transactionSender: AccountInfo = AccountInfo()
+    var transactionID: String = ""
+    var transactionTime: String = ""
+    var transactionAmount: Double = 0.0
+    var transactionNarration: String = ""
+    var transactionReceiver: AccountInfo = AccountInfo()
+    var transactionSender: AccountInfo = AccountInfo()
 }
 
 

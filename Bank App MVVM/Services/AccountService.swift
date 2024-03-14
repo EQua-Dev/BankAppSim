@@ -9,6 +9,7 @@ import Foundation
 
 enum NetworkError: Error{
     case badUrl
+    case authenticationError
     case decodingError
     case noData
 }
@@ -51,7 +52,6 @@ class AccountService {
             if let createAccountResponse = createAccountResponse {
                 completion(.success(createAccountResponse))
             }else{
-                print("Error \(error)")
                 completion(.failure(.decodingError))
             }
             
@@ -64,21 +64,22 @@ class AccountService {
         guard let url = URL.urlForFetchAllAccountsOfUser() else {
             return completion(.failure(.badUrl))
         }
-        print("Token: \(String.authToken()!)")
+        
+        guard let userToken = String.authToken() else {
+                return completion(.failure(.authenticationError))
+            }
 
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(String.authToken()!)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
 
-        print("Account Request: \(request.allHTTPHeaderFields)")
-
-        
+                
         //make the network request
-        URLSession.shared.dataTask(with: url){ data, response, error in
+        URLSession.shared.dataTask(with: request){ data, response, error in
             
-            print("Account \(data)")
+            print("Account \(response!)")
             //unwrap the response data
             guard let data = data, error == nil else{
                 return completion(.failure(.noData))

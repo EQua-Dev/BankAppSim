@@ -76,7 +76,9 @@ class UserService {
             //decode the data
             let signInUserResponse = try? JSONDecoder().decode(SignInUserResponse.self, from: data)
             if let signInUserResponse = signInUserResponse {
+                print("Token from sign in: \(signInUserResponse.data.token)")
                 UserDefaults.standard.set(signInUserResponse.data.token, forKey: String.AUTH_TOKEN_KEY())
+                print("Bearer \(String.authToken()!)")
                 completion(.success(signInUserResponse))
             }else{
                 completion(.failure(.decodingError))

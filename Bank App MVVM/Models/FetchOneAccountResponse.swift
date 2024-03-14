@@ -20,15 +20,15 @@ struct AccountSearchData: Decodable{
 }
 
 struct AccountInfo: Decodable {
-    let accountId: String = ""
-    let accountType: String = ""
-    let accountOwnerId: AccountOwner = AccountOwner()
-    let accountNumber: String = ""
-    let accountBalance: Double = 0.0
-    let dateCreated: String = ""
+    var accountId: String = ""
+    var accountType: String = ""
+    var accountOwnerId: AccountOwner = AccountOwner()
+    var accountNumber: String = ""
+    var accountBalance: Double = 0.0
+    var dateCreated: String = ""
 }
 
 struct AccountOwner: Decodable{
-    let userId: String = ""
-    let userName: String = ""
+    var userId: String = ""
+    var userName: String = ""
 }
