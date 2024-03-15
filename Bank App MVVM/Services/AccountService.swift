@@ -143,6 +143,7 @@ class AccountService {
         request.addValue("Bearer \(String.authToken()!)", forHTTPHeaderField: "Authorization")
         request.httpBody = try? JSONEncoder().encode(transferFundRequest)
         
+        
         //make network request
         URLSession.shared.dataTask(with: request){ data, response, error in
             //unwrap the response data
@@ -150,11 +151,11 @@ class AccountService {
                 return completion(.failure(.noData))
             }
             
-            print("data decoding stage")
-            
             //decode the data
             let transferFundsResponse = try? JSONDecoder().decode(TransferFundResponse.self, from: data)
+            
             if let transferFundsResponse = transferFundsResponse {
+                print("Response Code: \(transferFundsResponse)")
                 completion(.success(transferFundsResponse))
             }else{
                 completion(.failure(.decodingError))

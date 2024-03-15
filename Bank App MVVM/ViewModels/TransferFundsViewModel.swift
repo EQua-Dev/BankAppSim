@@ -21,10 +21,16 @@ class TransferFundsViewModel: ObservableObject{
     @Published var accounts: [AccountViewModel] = [AccountViewModel]()
     @Published var searchedAccount: AccountInfo = AccountInfo()
     @Published var transactionReceipt: TransactionDetail = TransactionDetail()
+    
+    @Published var errorMessage: String = ""
+
 
     
     var transactionAmount: String = ""
     var transactionNarration: String = ""
+    
+    @Published var showAlert: Bool = false
+    @Published var isLoading: Bool = false
     
     
     
@@ -60,7 +66,10 @@ extension TransferFundsViewModel{
     
     func searchOneAccount(completion: @escaping (Bool) -> Void){
         
+        self.isLoading = true
+        
         if !isAccountNoValid(enteredAccountNumber: accountNoToSearch){
+            self.isLoading = false
             return completion(false)
         }
         AccountService.shared.searchOneAccount(accountNumber: accountNoToSearch){ result in
@@ -69,40 +78,59 @@ extension TransferFundsViewModel{
                 case .success(let account):
                     DispatchQueue.main.async {
                         self.searchedAccount = account.data.account
+                        self.isLoading = false
                     }
                     completion(true)
                     
                 case .failure(let error):
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                    }
                     print(error.localizedDescription)
             }
             
         }
     }
     
-    func transferFunds(completion: @escaping () -> Void){
+    func transferFunds(myAccountNumber: String, theirAccountNumber: String, completion: @escaping (Bool) -> Void){
+        
+        self.isLoading = true
         
         if !isValid() || isAccountNoValid(enteredAccountNumber: transactionTo){
-            return
+            self.isLoading = false
+            return completion(false)
         }
       
         
-        let transferFundRequest = TransferFundRequest(transactionTo: transactionTo, transactionAmount: Double(transactionAmount)!, transactionNarration: transactionNarration, transactionDate: String.currentMillisTime())
+        let transferFundRequest = TransferFundRequest(transactionTo: theirAccountNumber, transactionAmount: Double(transactionAmount)!, transactionNarration: transactionNarration, transactionDate: String.currentMillisTime())
         
-        AccountService.shared.transferFunds(myAccountNumber: transactionFrom, transferFundRequest: transferFundRequest){ result in
+        print("request body: \(transferFundRequest)")
+        
+        AccountService.shared.transferFunds(myAccountNumber: myAccountNumber, transferFundRequest: transferFundRequest){ result in
         
                     switch(result){
                         case .success(let response):
                             if response.status{
                                 DispatchQueue.main.async {
                                     self.transactionReceipt = response.data
+                                    self.isLoading = false
                                 }
-                                completion()
+                                completion(true)
                             }else{
-                                self.message = response.message
+                                DispatchQueue.main.async {
+                                    self.errorMessage = response.message
+                                    self.isLoading = false
+                                }
+                                completion(false)
                             }
                         case .failure(let error):
-                            self.message = error.localizedDescription
+                            DispatchQueue.main.async {
+                                self.showAlert = true
+                                self.errorMessage = error.localizedDescription
+                                self.isLoading = false
+                            }
                             print(error.localizedDescription)
+                            completion(false)
                     }
         
                 }
